@@ -3,6 +3,6 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_url: "https://github.com/kartik9193/cnnClassifier/blob/main/cat-dog-data.zip"
+  source_url: https://github.com/entbappy/Branching-tutorial/raw/master/cat-dog-data.zip
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
