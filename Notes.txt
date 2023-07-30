@@ -1,0 +1,86 @@
+Steps for creating an End2End project wiht deployment
+
+1. Create Git repository (add readme, .github/workflows/.gitkeep, also add MIT license)
+2. Clone it to your local working directory
+3. Create Template.py file with following directory and files.
+"""
+"src/{project_name}/__init__.py"
+"src/{project_name}/components/__init__.py"
+"src/{project_name}/config/__init__.py"
+"src/{project_name}/utils/__init__.py"
+"src/{project_name}/pipeline/__init__.py"
+"src/{project_name}/entity/__init__.py"
+"src/{project_name}/constants/__init__.py"
+"config/config.yaml"
+"params.yaml"
+"requirements.txt"
+"setup.py"
+"research/trails.ipynb"
+"""
+
+4. Create requirements.txt file with '-e .' at the end of file
+
+'-e .' will add the current project folder as an installation package to the list and will install the project as a module.
+
+5. Create setup.py file, for the installation of project folder as a python package.
+6. Create logging module, with logging format, logging file handler and stream handler as well. and import it into the project constructor file.
+7. Create common.py in utils module. utils/common.py module contains all the custom functions that are commonly used and will be called upon when required whenever and wherever needed in the project.
+
+These custom functions for this specific project are
+read_yaml(), create_directories(), save_json(), load_json(),
+save_bin(), load_bin(), get_size(), decodeImage(),
+encodeImageIntoBase64()
+
+8. Create the project workflow, below is the workflow of this project
+
+- Update config.yaml
+- Update secrets.yaml [Optional]
+- Update params.yaml
+- Update the entity
+- Update the configuration manager in the src config
+- Update the components
+- Update the pipeline
+- Update the main.py
+
+9. Now follow the project workflow and create the necessary modules as per the requirement.
+10. Create config.yaml and add the required details like root directory path for data directory and data ingestion modules 
+
+"""
+artifacts_root: artifacts
+
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://github.com/entbappy/Branching-tutorial/raw/master/cat-dog-data.zip
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
+"""
+
+11. Add some text like """ key: value """ to params.yaml, don't leave it empty.
+12.Add CONFIG_FILE_PATH, PARAMS_FILE_PATH to the constants/__init__.py module
+13.Create ConfigurationManager module to create a configuration manager that will read yaml files and create required directories and get_data_ingestion_config function to this configuration manager class as well to manage the data ingestion as well
+14. Once the ConfigurationManager module is created, let's move onto creating a DataIngestion class module
+15. Add functionalities like download_file(), _preprocess(), _get_updated_list_of_files(), unzip_and_clean() to this module.
+16. Create a method to create ConfigurationManager object, create data_ingestion_config object by passing the config object to the get_data_ingestion_config module, downloa the required files and unzip and clean by using the created modules.
+17. Add created entities to the src/entity/config_entity.py file
+18. Add ConfigurationManager module to the src/config/configutaion.py file
+19. Add DataIngestion module to the src/components/data_ingestion.py file
+20. Add the pipeline for creating config object and calling data ingestion modules into the src/pipeline/stage_01_data_ingestion.py file
+21.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
