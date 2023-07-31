@@ -1,0 +1,15 @@
+tensorflow-macos==2.9
+Tensorflow-metal==0.5.0
+pandas
+matplotlib
+notebook
+numpy
+seaborn
+python-box==6.0.2
+pyYAML
+tqdm
+ensure==1.0.2
+joblib
+types-pyYAML
+scipy
+-e .
