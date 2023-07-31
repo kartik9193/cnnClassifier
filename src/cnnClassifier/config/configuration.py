@@ -2,7 +2,8 @@ from cnnClassifier.constants import *
 from cnnClassifier.utils import read_yaml, create_directories
 from pathlib import Path
 import os
-from cnnClassifier.entity import DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbacksConfig
+from cnnClassifier.entity import DataIngestionConfig, PrepareBaseModelConfig
+from cnnClassifier.entity import PrepareCallbacksConfig, TrainingConfig
 
 
 class ConfigurationManager:
@@ -64,3 +65,25 @@ class ConfigurationManager:
         )
 
         return prepare_callbacks
+
+    def get_training_config(self) -> TrainingConfig:
+        training = self.config.training
+        prepare_base_model = self.config.prepare_base_model
+        params = self.params
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "PetImages")
+        create_directories([
+            Path(training.root_dir)
+        ])
+
+        training_config = TrainingConfig(
+            root_dir=Path(training.root_dir),
+            trained_model_path=Path(training.trained_model_path),
+            udpated_base_model_path=Path(prepare_base_model.updated_base_model_path),
+            training_data=Path(training_data),
+            params_batch_size=params.BATCH_SIZE,
+            params_epochs=params.EPOCHS,
+            params_image_size=params.IMAGE_SIZE,
+            params_is_augmentation=params.AUGMENTATION
+        )
+
+        return training_config
