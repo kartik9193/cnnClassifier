@@ -13,4 +13,4 @@
 
 
 
-URL: 839669583026.dkr.ecr.us-east-1.amazonaws.com/catdog
+URI: 839669583026.dkr.ecr.us-east-1.amazonaws.com/catdog
