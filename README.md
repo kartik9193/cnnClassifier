@@ -10,3 +10,7 @@
 6. Update the components
 7. Update the pipeline
 8. Update the main.py
+
+
+
+URL: 839669583026.dkr.ecr.us-east-1.amazonaws.com/catdog
