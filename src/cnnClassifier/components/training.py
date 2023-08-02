@@ -10,7 +10,7 @@ class Training:
     
     def get_base_model(self):
         self.model = tf.keras.models.load_model(
-            filepath=self.config.udpated_base_model_path
+            filepath=self.config.updated_base_model_path
         )
     
 
